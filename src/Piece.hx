@@ -1,5 +1,6 @@
 import flash.display.Sprite;
 import starling.display.Image;
+import starling.textures.TextureAtlas;
 
 /*board =[00, 01, 02, 03,
 		10, 11, 12, 13,
@@ -7,19 +8,18 @@ import starling.display.Image;
 		30, 31, 32, 33]
 currentpiece = [00]*/
 
-public var TextureAtlas:TextureAtlas = new TextureAtlas (assets.png, assets.xml);  //  check spelling of assets.png/xml files
-public var fruitNames = new Array();
 
-fruitNames = ['banana', 'cherry', 'grapes', 'orange', 'watermelon'];
-public function randomImage() {
-	public var ranNum:Int;
-	ranNum = Math.round(Math.random() * 4);
-	return fruitNames[ranNum];
-}
 
 class Piece extends Sprite {
 	public var fruitImage:Image;
 	public var value:String;
+	public var TextureAtlas:TextureAtlas = new TextureAtlas (assets.png, assets.xml);  //  check spelling of assets.png/xml files
+	public var fruitNames = ['banana', 'cherry', 'grapes', 'orange', 'watermelon'];
+	public function randomImage() {
+		var ranNum:Int;
+		ranNum = Math.round(Math.random() * 4);
+		return fruitNames[ranNum];
+	}
 	
 	function new() {
 		super();
