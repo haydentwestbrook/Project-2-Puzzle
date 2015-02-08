@@ -9,7 +9,6 @@ import starling.display.Image;
 class Root extends Sprite {
 
 	public static var assets:AssetManager;
-	public var menu:Menu;
 
 	public function new() {
 		super();
@@ -33,14 +32,25 @@ class Root extends Sprite {
                         alpha: 0,
                         onComplete: function() {
                         	startup.removeChild(startup.loadingBitmap);
-                        	menu = new Menu();
-							this.addChild(menu);
+                        	addMenu();
                         	addEventListener(Event.TRIGGERED, menuButtonClicked);
                			}
 
                 });
             }
 
+        });
+	}
+
+	public function addMenu() {
+		var menu = new Menu();
+		menu.alpha = 0;
+		addChild(menu);
+		//Tween in menu
+		Starling.juggler.tween(menu, 0.25, {
+                    transition: Transitions.EASE_IN,
+                        delay: 0.0,
+                        alpha: 1.0
         });
 	}
 
@@ -51,22 +61,52 @@ class Root extends Sprite {
 		} else if(button.name == "tutorial") {
 			showTutorial();
 		} else if(button.name == "back") {
-			this.removeChildren();
-			this.addChild(menu);
+			Starling.juggler.tween(getChildAt(0), .25, {
+                    transition: Transitions.EASE_OUT,
+                        delay: 0.0,
+                        alpha: 0.0,
+                        onComplete: function() {
+                        	removeChildAt(0);
+                        }
+        	});
+			addMenu();
 		}
 	}
 
 	public function startGame() {
-		this.removeChildren();
+		//Tween out menu
+		Starling.juggler.tween(getChildAt(0), 0.25, {
+                    transition: Transitions.EASE_OUT,
+                        delay: 0.0,
+                        alpha: 0.0,
+                        onComplete: function() {
+                        	removeChildAt(0);
+                        }
+        });
 		removeEventListeners();
 		var game = new Game();
-		this.addChild(game);
+		addChild(game);
 	}
 
 	public function showTutorial() {
-		this.removeChild(menu);
+		//Tween out the menu
+		Starling.juggler.tween(getChildAt(0), 0.25, {
+                    transition: Transitions.EASE_OUT,
+                        delay: 0.0,
+                        alpha: 0.0,
+                        onComplete: function() {
+                        	removeChildAt(0);
+                        }
+        });
 		var tutorial = new Tutorial();
-		this.addChild(tutorial);
+		tutorial.alpha = 0;
+		addChild(tutorial);
+		//Tween in tutorial screen
+		Starling.juggler.tween(tutorial, 0.25, {
+                    transition: Transitions.EASE_IN,
+                        delay: .25,
+                        alpha: 1.0
+        });
 	}
 }
 
