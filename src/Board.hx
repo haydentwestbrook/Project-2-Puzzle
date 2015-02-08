@@ -3,7 +3,8 @@ import starling.display.Image;
 import Piece;
 
 class Board extends Sprite {
-	public var board:Array<Array<Piece>;
+	public var board:Array < Array<Piece>;
+	public var currentPiece:Array<Piece>;
 
 	function new() {
 		super();
@@ -16,54 +17,58 @@ class Board extends Sprite {
 				board[i][j] = new Piece();
 			}
 		}
+		currentPiece.push(board[0][0]);
 
 	}
 	
 	function getAdjacent(x:Int, y:Int) {
 		adjacent:Array<Piece> = new Array();
 		if (x == 0 && y == 0) { //top left corner
-			adjacent.add(board[x][y + 1];
-			adjacent.add(board[x + 1][y]);
+			adjacent.push(board[x][y + 1];
+			adjacent.push(board[x + 1][y]);
 		}
 		
 		else if (x == 0 && y == board[x].length) { //top right corner
-			adjacent.add(board[x][y - 1];
-			adjacent.add(board[x + 1][y];
+			adjacent.push(board[x][y - 1];
+			adjacent.push(board[x + 1][y];
 		}
 		else if (x == board.length && y == 0){//bottom left corner
-			adjacent.add(board[x][y + 1];
-			adjacent.add(board[x-1][y];	
+			adjacent.push(board[x][y + 1];
+			adjacent.push(board[x-1][y];	
 		}
 		else if (x == board.length && y == board[x].length) { // bottom right corner
-			adjacent.add(board[x][y - 1];
-			adjacent.add(board[x - 1][y];	
+			adjacent.push(board[x][y - 1];
+			adjacent.push(board[x - 1][y];	
 		}
 		else if (x == 0 && y != board[x].length) {// top edge
-			adjacent.add((board[x][y - 1]);
-			adjacent.add(board[x][y + 1]);
-			adjacent.add(board[x + 1][y];
+			adjacent.push((board[x][y - 1]);
+			adjacent.push(board[x][y + 1]);
+			adjacent.push(board[x + 1][y];
 		}
 		else if ( x == board.length && y != board[x].length) { //bottom edge
-			adjacent.add((board[x][y - 1]);
-			adjacent.add(board[x][y + 1]);
-			adjacent.add(board[x - 1][y];
+			adjacent.push((board[x][y - 1]);
+			adjacent.push(board[x][y + 1]);
+			adjacent.push(board[x - 1][y];
 		}
 		else if (y == 0) { // left edge
-			adjacent.add((board[x+1][y);
-			adjacent.add(board[x-1][y]);
-			adjacent.add(board[x][y+1];
+			adjacent.push((board[x+1][y);
+			adjacent.push(board[x-1][y]);
+			adjacent.push(board[x][y+1];
 		}
 		else if (y == board[x].length) { // right edge
-			adjacent.add((board[x+1][y);
-			adjacent.add(board[x-1][y]);
-			adjacent.add(board[x][y-1];
+			adjacent.push(board[x+1][y);
+			adjacent.push(board[x-1][y]);
+			adjacent.push(board[x][y-1];
 		}
 		else { // middle
-			adjacent.add((board[x+1][y);
-			adjacent.add(board[x-1][y]);
-			adjacent.add(board[x][y + 1];
-			adjacent.add(board[x][y - 1];
+			adjacent.push((board[x+1][y);
+			adjacent.push(board[x-1][y]);
+			adjacent.push(board[x][y + 1];
+			adjacent.push(board[x][y - 1];
 			
+		}
+		for (i in adjacent) {
+			if (adjacent[i] in currentPiece) adjacent.remove(adjacent[i]); 
 		}
 		return adjacent;
 	}
