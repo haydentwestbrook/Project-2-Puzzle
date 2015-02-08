@@ -21,6 +21,7 @@ class Root extends Sprite {
 		assets.enqueue("assets/startbutton.png");
 		assets.enqueue("assets/tutorialbutton.png");
 		assets.enqueue("assets/backbutton.png");
+		assets.enqueue("assets/menu.png");
 
 		assets.loadQueue(function onProgress(ratio:Float) {
 
@@ -58,6 +59,8 @@ class Root extends Sprite {
 	public function startGame() {
 		this.removeChildren();
 		removeEventListeners();
+		var game = new Game();
+		this.addChild(game);
 	}
 
 	public function showTutorial() {
@@ -76,12 +79,18 @@ class Menu extends Sprite {
 	public function new() {
 		super();
 
+		var menu = new Image(Root.assets.getTexture("menu"));
+		addChild(menu);
+
 		startButton = new Button(Root.assets.getTexture("startbutton"));
 		startButton.name = "start";
-		startButton.x = 100;
+		startButton.x = 250;
+		startButton.y = 200;
 		this.addChild(startButton);
 
 		tutorialButton = new Button(Root.assets.getTexture("tutorialbutton"));
+		tutorialButton.x = 250;
+		tutorialButton.y = 300;
 		tutorialButton.name = "tutorial";
 		this.addChild(tutorialButton);
 	}
