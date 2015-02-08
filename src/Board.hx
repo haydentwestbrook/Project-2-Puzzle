@@ -3,8 +3,10 @@ import starling.display.Image;
 import Piece;
 
 class Board extends Sprite {
+
 	public var board:Array < Array<Piece>;
 	public var currentPiece:Array<Piece>;
+
 
 	function new() {
 		super();
@@ -12,8 +14,8 @@ class Board extends Sprite {
 				[null, null, null, null],
 				[null, null, null, null], 
 				[null, null, null, null]];
-		for (i in board){
-			for (j in board[i]){
+		for (i in 0...board.length){
+			for (j in 0...board[i].length){
 				board[i][j] = new Piece();
 			}
 		}
@@ -22,7 +24,7 @@ class Board extends Sprite {
 	}
 	
 	function getAdjacent(x:Int, y:Int) {
-		adjacent:Array<Piece> = new Array();
+		var adjacent:Array<Piece>;
 		if (x == 0 && y == 0) { //top left corner
 			adjacent.push(board[x][y + 1];
 			adjacent.push(board[x + 1][y]);
@@ -76,8 +78,8 @@ class Board extends Sprite {
 	function display(){
 		var startX = 0;
 		var startY = 0;
-		for (i in board){
-			for(j in board[i]){
+		for (i in 0...board.length){
+			for(j in 0...board[i].length){
 				board[i][j].x = startX + 64*i;
 				board[i][j].y = startY + 64*j;
 				addChild(board[i][j]);
