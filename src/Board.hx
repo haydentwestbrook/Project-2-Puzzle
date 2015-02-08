@@ -25,7 +25,7 @@ class Board extends Sprite {
 		for (i in board){
 			for(j in board[i]){
 				board[i][j].x = startX + 64*i;
-				board[i][j].y = startY + 65*j;
+				board[i][j].y = startY + 64*j;
 				addChild(board[i][j]);
 			}
 		}
