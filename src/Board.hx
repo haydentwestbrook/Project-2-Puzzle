@@ -4,9 +4,7 @@ import Piece;
 
 class Board extends Sprite {
 
-	public var board:Array < Array<Piece>;
-	public var currentPiece:Array<Piece>;
-
+	public var board:Array <Array<Piece>>;
 
 	function new() {
 		super();
@@ -19,8 +17,6 @@ class Board extends Sprite {
 				board[i][j] = new Piece();
 			}
 		}
-		currentPiece.push(board[0][0]);
-
 	}
 	
 	function getAdjacent(x:Int, y:Int) {
