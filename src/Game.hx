@@ -13,7 +13,7 @@ class Game extends Sprite {
 	public function new() {
 		super();
 		var board = new Board();
-		board.display();
+		//board.display();
 		addChild(board);
 	}
 }
