@@ -94,11 +94,20 @@ class Root extends Sprite {
 		addChild(game);
 		 Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN,
                             function(event:KeyboardEvent) {
-                                if (event.keyCode == Keyboard.LEFT) {
+                                if (event.keyCode == 49) {
                                 	game.flip('cherry');
                                 }
-                                else if(event.keyCode == Keyboard.RIGHT) {
+                                else if(event.keyCode == 50) {
                                 	game.flip('orange');
+                                }
+                                else if(event.keyCode == 51) {
+                                	game.flip('banana');
+                                }
+                                else if(event.keyCode == 52) {
+                                	game.flip('grapes');
+                                }
+                                else if(event.keyCode == 53) {
+                                	game.flip('watermelon');
                                 }
                                 });
 	}

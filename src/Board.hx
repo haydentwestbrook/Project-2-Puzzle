@@ -83,18 +83,18 @@ class Board extends Sprite {
 	public function flip(newFruit:String, row:Int, column:Int){
 		var newPiece = new Piece();
 		newPiece.changeValue(newFruit);
-		if(row > board[0].length || column > board.length){
-			return;
-		}
-		else{
-			if(board[row+1][column].value == board[row][column].value){
+	//	if(board[row+1][column] == null || board[row][column+1] == null){
+	//		return;
+	//	}
+	//	else{
+			if(row+1 < board.length && board[row+1][column].value == board[row][column].value){
 				flip(newFruit, row+1, column);
 			}
-			if(board[row][column+1].value == board[row][column].value){
+			if(column+1 < board.length && board[row][column+1].value == board[row][column].value){
 				flip(newFruit, row, column+1);
 			}
 			board[row][column].changeValue(newFruit);
-		}
+	//	}
 
 	}
 }

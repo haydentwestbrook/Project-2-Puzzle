@@ -14,7 +14,7 @@ class Game extends Sprite {
 
 	public function new() {
 		super();
-		board = new Board(10);
+		board = new Board(5);
 		//board.display();
 		board.x = 64;
 		board.y = 64;

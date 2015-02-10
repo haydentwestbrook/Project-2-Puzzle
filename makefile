@@ -19,4 +19,4 @@ clean:
 	del game.swf *~ src\*~
 
 test: game.swf
-	$(ADL) -profile tv -screensize 1280x720:1280x720 game.xml
+	$(ADL) -profile tv -screensize 650x650:650x650 game.xml
