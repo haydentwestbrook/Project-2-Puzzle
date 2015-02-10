@@ -1,5 +1,6 @@
-import flash.display.Sprite;
+import starling.display.Sprite;
 import starling.display.Image;
+import starling.display.DisplayObject;
 import starling.textures.TextureAtlas;
 import Root;
 
@@ -24,12 +25,14 @@ class Piece extends Sprite {
 	function new() {
 		super();
 		value = randomImage();
-		var fruitImage = new Image(Root.assets.getTexture(value));
+		fruitImage = new Image(Root.assets.getTexture('startbutton')); //needs to be changed to access fruits
+		addChild(fruitImage);
 	}
 	
 	function changeValue(newValue:String) {
 		value = newValue;
 		var fruitImage = new Image(Root.assets.getTexture(newValue));
+
 		
 	}
 	

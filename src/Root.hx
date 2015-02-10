@@ -6,7 +6,6 @@ import starling.events.Event;
 import starling.core.Starling;
 import starling.display.Image;
 import starling.display.DisplayObject;
-import starling.core.Starling;
 
 class Root extends Sprite {
 

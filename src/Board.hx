@@ -1,4 +1,4 @@
-import flash.display.Sprite;
+import starling.display.Sprite;
 import starling.display.DisplayObject;
 import Piece;
 
@@ -8,6 +8,8 @@ class Board extends Sprite {
 
 	public function new() {
 		super();
+		var startX = 0;
+		var startY = 0;
 		board = [[null, null, null, null], 
 				[null, null, null, null],
 				[null, null, null, null], 
@@ -15,6 +17,9 @@ class Board extends Sprite {
 		for (i in 0...board.length){
 			for (j in 0...board[i].length){
 				board[i][j] = new Piece();
+				board[i][j].x = startX + 64*i;
+				board[i][j].y = startY + 64*j;
+				addChild(board[i][j]);
 			}
 		}
 	}
@@ -72,17 +77,5 @@ class Board extends Sprite {
 				} 
 		}
 		return adjacent;
-	}
-
-	public function display(){
-		var startX = 0;
-		var startY = 0;
-		for (i in 0...board.length){
-			for(j in 0...board[i].length){
-				board[i][j].x = startX + 64*i;
-				board[i][j].y = startY + 64*j;
-				addChild(board[i][j]);
-			}
-		}
 	}
 }
