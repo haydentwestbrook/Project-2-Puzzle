@@ -5,13 +5,13 @@ import starling.animation.Transitions;
 import starling.events.Event;
 import starling.core.Starling;
 import starling.display.Image;
+import starling.display.DisplayObject;
 import Board;
 
 class Game extends Sprite {
 
 	public function new() {
 		super();
-		//var board = new Board();
-		//addChild(board);
+		var board = new Board();
 	}
 }
