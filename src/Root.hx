@@ -16,13 +16,15 @@ class Root extends Sprite {
 	}
 
 	public function start(startup:Startup) {
-
+		
 		assets = new AssetManager();
 		assets.enqueue("assets/startbutton.png");
 		assets.enqueue("assets/tutorialbutton.png");
 		assets.enqueue("assets/backbutton.png");
 		assets.enqueue("assets/menu.png");
+		assets.enqueue("assets/assets.xml");
 		assets.enqueue("assets/assets.png");
+		
 
 		assets.loadQueue(function onProgress(ratio:Float) {
 

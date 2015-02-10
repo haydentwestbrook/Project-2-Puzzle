@@ -25,7 +25,7 @@ class Piece extends Sprite {
 	function new() {
 		super();
 		value = randomImage();
-		fruitImage = new Image(Root.assets.getTexture('startbutton')); //needs to be changed to access fruits
+		fruitImage = new Image(Root.assets.getTexture(value + '.png')); //needs to be changed to access fruits
 		addChild(fruitImage);
 	}
 	
