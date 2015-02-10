@@ -5,22 +5,23 @@ import Piece;
 class Board extends Sprite {
 
 	public var board:Array <Array<Piece>>;
+	public var size:Int;
 
-	public function new() {
+	public function new(size:Int) {
 		super();
 		var startX = 0;
 		var startY = 0;
-		board = [[null, null, null, null], 
-				[null, null, null, null],
-				[null, null, null, null], 
-				[null, null, null, null]];
-		for (i in 0...board.length){
-			for (j in 0...board[i].length){
-				board[i][j] = new Piece();
-				board[i][j].x = startX + 64*i;
-				board[i][j].y = startY + 64*j;
-				addChild(board[i][j]);
+		board = new Array<Array<Piece>>();
+		for (i in 0...size){
+			var newRow = new Array<Piece>();
+			for (j in 0...size){
+				var newPiece = new Piece();
+				newRow.push(newPiece);
+				newPiece.x = startX + 64*i;
+				newPiece.y = startY + 64*j;
+				addChild(newPiece);
 			}
+			board.push(newRow);
 		}
 	}
 	
