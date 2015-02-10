@@ -10,10 +10,18 @@ import Board;
 
 class Game extends Sprite {
 
+	public var board:Board;
+
 	public function new() {
 		super();
-		var board = new Board(10);
+		board = new Board(10);
 		//board.display();
+		board.x = 64;
+		board.y = 64;
 		addChild(board);
+	}
+
+	public function flip(newFruit:String){
+		board.flip(newFruit, 0 ,0);
 	}
 }

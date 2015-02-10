@@ -6,6 +6,8 @@ import starling.events.Event;
 import starling.core.Starling;
 import starling.display.Image;
 import starling.display.DisplayObject;
+import starling.events.KeyboardEvent;
+import flash.ui.Keyboard;
 
 class Root extends Sprite {
 
@@ -16,7 +18,7 @@ class Root extends Sprite {
 	}
 
 	public function start(startup:Startup) {
-		
+
 		assets = new AssetManager();
 		assets.enqueue("assets/startbutton.png");
 		assets.enqueue("assets/tutorialbutton.png");
@@ -90,6 +92,15 @@ class Root extends Sprite {
 		removeEventListeners();
 		var game = new Game();
 		addChild(game);
+		 Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN,
+                            function(event:KeyboardEvent) {
+                                if (event.keyCode == Keyboard.LEFT) {
+                                	game.flip('cherry');
+                                }
+                                else if(event.keyCode == Keyboard.RIGHT) {
+                                	game.flip('orange');
+                                }
+                                });
 	}
 
 	public function showTutorial() {

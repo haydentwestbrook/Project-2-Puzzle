@@ -29,9 +29,11 @@ class Piece extends Sprite {
 		addChild(fruitImage);
 	}
 	
-	function changeValue(newValue:String) {
+	public function changeValue(newValue:String) {
 		value = newValue;
-		var fruitImage = new Image(Root.assets.getTexture(newValue));
+		var fruitImage = new Image(Root.assets.getTexture(newValue + '.png'));
+		removeChildren();
+		addChild(fruitImage);
 
 		
 	}
