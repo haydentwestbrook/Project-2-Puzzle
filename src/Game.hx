@@ -7,21 +7,26 @@ import starling.core.Starling;
 import starling.display.Image;
 import starling.display.DisplayObject;
 import Board;
+import Scoreboard;
 
 class Game extends Sprite {
 
 	public var board:Board;
+	public var scoreboard:Scoreboard;
 
 	public function new() {
 		super();
+		scoreboard = new Scoreboard(5);
 		board = new Board(5);
 		//board.display();
 		board.x = 64;
-		board.y = 64;
+		board.y = 100;
 		addChild(board);
+		addChild(scoreboard);
 	}
 
 	public function flip(newFruit:String){
 		board.flip(newFruit, 0 ,0);
+		scoreboard.useMove();
 	}
 }

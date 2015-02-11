@@ -6,20 +6,44 @@ class Board extends Sprite {
 
 	public var board:Array <Array<Piece>>;
 	public var size:Int;
+	public var numCherries:Int;
+	public var numOranges:Int;
+	public var numBananas:Int;
+	public var numGrapes:Int;
+	public var numWatermelons:Int;
+
 
 	public function new(size:Int) {
 		super();
-		var startX = 0;
-		var startY = 0;
+		numCherries = 0;
+		numOranges = 0;
+		numBananas = 0;
+		numGrapes = 0;
+		numWatermelons = 0;
 		board = new Array<Array<Piece>>();
 		for (i in 0...size){
 			var newRow = new Array<Piece>();
 			for (j in 0...size){
 				var newPiece = new Piece();
 				newRow.push(newPiece);
-				newPiece.x = startX + 64*i;
-				newPiece.y = startY + 64*j;
+				newPiece.x = 64*i;
+				newPiece.y = 64*j;
 				addChild(newPiece);
+				if(newPiece.value == "cherry"){
+					numCherries++;
+				}
+				else if(newPiece.value == "orange"){
+					numOranges++;
+				}
+				else if(newPiece.value == "banana"){
+					numBananas++;
+				}
+				else if(newPiece.value == "grapes"){
+					numGrapes++;
+				}
+				else if(newPiece.value == "watermelon"){
+					numWatermelons++;
+				}
 			}
 			board.push(newRow);
 		}
@@ -83,18 +107,43 @@ class Board extends Sprite {
 	public function flip(newFruit:String, row:Int, column:Int){
 		var newPiece = new Piece();
 		newPiece.changeValue(newFruit);
-	//	if(board[row+1][column] == null || board[row][column+1] == null){
-	//		return;
-	//	}
-	//	else{
-			if(row+1 < board.length && board[row+1][column].value == board[row][column].value){
-				flip(newFruit, row+1, column);
-			}
-			if(column+1 < board.length && board[row][column+1].value == board[row][column].value){
-				flip(newFruit, row, column+1);
-			}
-			board[row][column].changeValue(newFruit);
-	//	}
 
+		if(row+1 < board.length && board[row+1][column].value == board[row][column].value){
+			flip(newFruit, row+1, column);
+		}
+		if(column+1 < board.length && board[row][column+1].value == board[row][column].value){
+			flip(newFruit, row, column+1);
+		}
+		if(board[row][column].value == "cherry"){
+			numCherries--;
+		}
+		else if(board[row][column].value == "orange"){
+			numOranges--;
+		}
+		else if(board[row][column].value == "banana"){
+			numBananas--;
+		}
+		else if(board[row][column].value == "grapes"){
+			numGrapes--;
+		}
+		else if(board[row][column].value == "watermelon"){
+			numWatermelons--;
+		}
+		board[row][column].changeValue(newFruit);
+		if(newPiece.value == "cherry"){
+			numCherries++;
+		}
+		else if(newPiece.value == "orange"){
+			numOranges++;
+		}
+		else if(newPiece.value == "banana"){
+			numBananas++;
+		}
+		else if(newPiece.value == "grapes"){
+			numGrapes++;
+		}
+		else if(newPiece.value == "watermelon"){
+			numWatermelons++;
+		}
 	}
 }

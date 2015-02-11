@@ -4,12 +4,6 @@ import starling.display.DisplayObject;
 import starling.textures.TextureAtlas;
 import Root;
 
-/*board =[00, 01, 02, 03,
-		10, 11, 12, 13,
-		20, 21, 22, 23,
-		30, 31, 32, 33]
-currentpiece = [00]*/
-
 
 
 class Piece extends Sprite {
