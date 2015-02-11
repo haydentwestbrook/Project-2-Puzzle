@@ -54,10 +54,10 @@ class Game extends Sprite {
 		return scoreboard.movesLeft;
 	}
 
-	public function nextLevel(){
+	public function nextLevel(size:Int){
 		removeChildren();
-		scoreboard.updateScore(5);
-		board = new Board(5);
+		scoreboard.updateScore(size);
+		board = new Board(size);
 		addChild(scoreboard);
 		board.x = 64;
 		board.y = 100;
