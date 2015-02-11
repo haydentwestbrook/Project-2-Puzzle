@@ -110,13 +110,14 @@ class Root extends Sprite {
                                 	game.flip('watermelon');
                                 }
                                 if(game.checkWin()){
-                                	trace("YOU WIN!");
+                                	game.nextLevel();
                                 }
                                 else if(game.getMoves() == 0){
                                 	trace("YOU LOSE!");
                                 }
                             });
 	}
+
 
 	public function showTutorial() {
 		//Tween out the menu
