@@ -13,11 +13,12 @@ class Game extends Sprite {
 
 	public var board:Board;
 	public var scoreboard:Scoreboard;
+	public var size:Int;
 
-	public function new() {
+	public function new(size:Int) {
 		super();
-		scoreboard = new Scoreboard(5);
-		board = new Board(5);
+		scoreboard = new Scoreboard(size);
+		board = new Board(size);
 		//board.display();
 		board.x = 64;
 		board.y = 100;

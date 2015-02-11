@@ -90,7 +90,7 @@ class Root extends Sprite {
                         }
         });
 		removeEventListeners();
-		var game = new Game();
+		var game = new Game(5);
 		addChild(game);
 		 Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN,
                             function(event:KeyboardEvent) {
