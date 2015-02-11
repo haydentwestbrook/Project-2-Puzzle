@@ -109,7 +109,13 @@ class Root extends Sprite {
                                 else if(event.keyCode == 53) {
                                 	game.flip('watermelon');
                                 }
-                                });
+                                if(game.checkWin()){
+                                	trace("YOU WIN!");
+                                }
+                                else if(game.getMoves() == 0){
+                                	trace("YOU LOSE!");
+                                }
+                            });
 	}
 
 	public function showTutorial() {

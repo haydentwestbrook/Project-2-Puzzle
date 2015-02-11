@@ -30,4 +30,27 @@ class Game extends Sprite {
 		board.flip(newFruit, 0 ,0);
 		scoreboard.useMove();
 	}
+
+	public function checkWin():Bool{
+		if(board.numOranges == 25){
+			return true;
+		}
+		if(board.numCherries == 25){
+			return true;
+		}
+		if(board.numBananas == 25){
+			return true;
+		}
+		if(board.numBananas == 25){
+			return true;
+		}
+		if(board.numBananas == 25){
+			return true;
+		}
+		return false;
+	}
+
+	public function getMoves():Int{
+		return scoreboard.movesLeft;
+	}
 }
