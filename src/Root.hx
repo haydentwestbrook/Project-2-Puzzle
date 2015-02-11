@@ -12,6 +12,7 @@ import flash.ui.Keyboard;
 class Root extends Sprite {
 
 	public static var assets:AssetManager;
+	public var game:Game;
 
 	public function new() {
 		super();
@@ -24,6 +25,7 @@ class Root extends Sprite {
 		assets.enqueue("assets/tutorialbutton.png");
 		assets.enqueue("assets/backbutton.png");
 		assets.enqueue("assets/menu.png");
+		assets.enqueue("assets/gameover.png");
 		assets.enqueue("assets/assets.xml");
 		assets.enqueue("assets/assets.png");
 		
@@ -90,32 +92,36 @@ class Root extends Sprite {
                         }
         });
 		removeEventListeners();
-		var game = new Game(5);
+		game = new Game(5);
 		addChild(game);
-		 Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN,
-                            function(event:KeyboardEvent) {
-                                if (event.keyCode == 49) {
-                                	game.flip('cherry');
-                                }
-                                else if(event.keyCode == 50) {
-                                	game.flip('orange');
-                                }
-                                else if(event.keyCode == 51) {
-                                	game.flip('banana');
-                                }
-                                else if(event.keyCode == 52) {
-                                	game.flip('grapes');
-                                }
-                                else if(event.keyCode == 53) {
-                                	game.flip('watermelon');
-                                }
-                                if(game.checkWin()){
-                                	game.nextLevel(5);
-                                }
-                                else if(game.getMoves() == 0){
-                                	trace("YOU LOSE!");
-                                }
-                            });
+		 Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, flip);
+	}
+
+	public function flip(event:KeyboardEvent) {
+	    if (event.keyCode == 49) {
+	    	game.flip('cherry');
+	    }
+	    else if(event.keyCode == 50) {
+	    	game.flip('orange');
+	    }
+	    else if(event.keyCode == 51) {
+	    	game.flip('banana');
+	    }
+	    else if(event.keyCode == 52) {
+	    	game.flip('grapes');
+	    }
+	    else if(event.keyCode == 53) {
+	    	game.flip('watermelon');
+	    }
+	    if(game.checkWin()){
+	    	//TODO: CONTINUE SCREEN
+	    	game.nextLevel(5);
+	    }
+	    else if(game.getMoves() == 0){
+	    	//TODO: GAME OVER SCREEN
+	    	var end = new GameOver();
+	    	addChild(end); 
+	    }
 	}
 
 
@@ -178,5 +184,16 @@ class Tutorial extends Sprite {
 		backButton = new Button(Root.assets.getTexture("backbutton"));
 		backButton.name = "back";
 		this.addChild(backButton);
+	}
+}
+
+class GameOver extends Sprite {
+	public var background:Image;
+	public var returnButton:Button;
+
+	public function new() {
+		super();
+		background = new Image(Root.assets.getTexture("gameover"));
+		addChild(background);
 	}
 }
