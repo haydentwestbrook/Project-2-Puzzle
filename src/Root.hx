@@ -110,7 +110,7 @@ class Root extends Sprite {
                                 	game.flip('watermelon');
                                 }
                                 if(game.checkWin()){
-                                	game.nextLevel();
+                                	game.nextLevel(5);
                                 }
                                 else if(game.getMoves() == 0){
                                 	trace("YOU LOSE!");
