@@ -32,19 +32,19 @@ class Game extends Sprite {
 	}
 
 	public function checkWin():Bool{
-		if(board.numOranges == 25){
+		if(board.numOranges == Math.pow(board.size, 2)) {
 			return true;
 		}
-		if(board.numCherries == 25){
+		if(board.numCherries == Math.pow(board.size, 2)){
 			return true;
 		}
-		if(board.numBananas == 25){
+		if(board.numBananas == Math.pow(board.size, 2)){
 			return true;
 		}
-		if(board.numBananas == 25){
+		if(board.numGrapes == Math.pow(board.size, 2)){
 			return true;
 		}
-		if(board.numBananas == 25){
+		if(board.numWatermelons == Math.pow(board.size, 2)){
 			return true;
 		}
 		return false;
