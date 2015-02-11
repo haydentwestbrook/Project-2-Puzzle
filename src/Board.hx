@@ -20,6 +20,7 @@ class Board extends Sprite {
 		numBananas = 0;
 		numGrapes = 0;
 		numWatermelons = 0;
+		this.size = size;
 		board = new Array<Array<Piece>>();
 		for (i in 0...size){
 			var newRow = new Array<Piece>();

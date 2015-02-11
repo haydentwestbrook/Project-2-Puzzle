@@ -35,7 +35,7 @@ class Scoreboard extends Sprite{
 	}
 
 	public function updateScore(size){
-		score = movesLeft * 10;
+		score += movesLeft * 10;
 		movesLeft = Math.round((size*size)*.75);
 		movesField.text = "Moves Left: " + movesLeft;
 		scoreField.text = "Score: " + score;
