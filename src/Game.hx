@@ -41,10 +41,10 @@ class Game extends Sprite {
 		if(board.numBananas == 25){
 			return true;
 		}
-		if(board.numBananas == 25){
+		if(board.numGrapes == 25){
 			return true;
 		}
-		if(board.numBananas == 25){
+		if(board.numWatermelons == 25){
 			return true;
 		}
 		return false;

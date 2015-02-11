@@ -109,6 +109,7 @@ class Root extends Sprite {
                                 else if(event.keyCode == 53) {
                                 	game.flip('watermelon');
                                 }
+                                
                                 if(game.checkWin()){
                                 	game.nextLevel(5);
                                 }
