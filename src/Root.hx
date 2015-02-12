@@ -79,7 +79,11 @@ class Root extends Sprite {
                         }
         	});
 			addMenu();
+		} else if(button.name == "return"){
+			removeChildren();
+			addMenu();
 		}
+
 	}
 
 	public function startGame() {
@@ -120,6 +124,7 @@ class Root extends Sprite {
 	    }
 	    else if(game.getMoves() == 0){
 	    	//TODO: GAME OVER SCREEN
+	    	addEventListener(Event.TRIGGERED, menuButtonClicked);
 	    	var end = new GameOver();
 	    	addChild(end); 
 	    }
@@ -196,5 +201,10 @@ class GameOver extends Sprite {
 		super();
 		background = new Image(Root.assets.getTexture("gameover"));
 		addChild(background);
+		returnButton = new Button(Root.assets.getTexture("backbutton"));
+		returnButton.name = "return";
+		returnButton.x = 250;
+		returnButton.y = 350;
+		this.addChild(returnButton);
 	}
 }
