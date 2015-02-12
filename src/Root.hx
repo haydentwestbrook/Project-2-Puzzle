@@ -24,6 +24,7 @@ class Root extends Sprite {
 		assets.enqueue("assets/startbutton.png");
 		assets.enqueue("assets/tutorialbutton.png");
 		assets.enqueue("assets/backbutton.png");
+		assets.enqueue("assets/background1.png");
 		assets.enqueue("assets/menu.png");
 		assets.enqueue("assets/gameover.png");
 		assets.enqueue("assets/assets.xml");
@@ -94,7 +95,7 @@ class Root extends Sprite {
 		removeEventListeners();
 		game = new Game(5);
 		addChild(game);
-		 Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, flip);
+		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, flip);
 	}
 
 	public function flip(event:KeyboardEvent) {

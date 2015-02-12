@@ -32,7 +32,10 @@ class Game extends Sprite {
 
 	public function flip(newFruit:String){
 		board.flip(newFruit, 0 ,0);
-		scoreboard.useMove();
+		if(newFruit != board.currentFruit) {
+			scoreboard.useMove();
+		}
+		board.currentFruit = newFruit;
 	}
 
 	public function checkWin():Bool{
