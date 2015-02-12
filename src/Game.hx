@@ -32,8 +32,8 @@ class Game extends Sprite {
 	}
 
 	public function flip(newFruit:String){
-		board.flip(newFruit, 0 ,0);
 		if(newFruit != board.currentFruit) {
+			board.flip(newFruit, 0 ,0);
 			scoreboard.useMove();
 		}
 		board.currentFruit = newFruit;
