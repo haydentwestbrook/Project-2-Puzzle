@@ -14,16 +14,20 @@ class Game extends Sprite {
 	public var board:Board;
 	public var scoreboard:Scoreboard;
 	public var size:Int;
+	public var background1:Image;
 
 	public function new(size:Int) {
 		super();
 		scoreboard = new Scoreboard(size);
+		background1 = new Image(Root.assets.getTexture("background1"));
 		board = new Board(size);
 		//board.display();
 		board.x = 64;
 		board.y = 100;
+		addChild(background1);
 		addChild(board);
 		addChild(scoreboard);
+
 	}
 
 	public function flip(newFruit:String){
@@ -58,9 +62,11 @@ class Game extends Sprite {
 		removeChildren();
 		scoreboard.updateScore(size);
 		board = new Board(size);
+		background1 = new Image(Root.assets.getTexture("background1"));
+		addChild(background1);
 		addChild(scoreboard);
+		addChild(board);
 		board.x = 64;
 		board.y = 100;
-		addChild(board);
 	}
 }
