@@ -14,7 +14,7 @@ class Scoreboard extends Sprite{
 	public function new(size:Int){
 		super();
 		score = 0;
-		movesLeft = Math.round((size*size)*.4);
+		movesLeft = Math.round((size*size)*.75);
 		scoreField = new TextField(100, 20, "Score: 0");
 		scoreField.vAlign = VAlign.TOP;
 		scoreField.hAlign = HAlign.LEFT;
@@ -36,7 +36,7 @@ class Scoreboard extends Sprite{
 
 	public function updateScore(size){
 		score += movesLeft * 10;
-		movesLeft = Math.round((size*size)*.4);
+		movesLeft = Math.round((size*size)*.75);
 		movesField.text = "Moves Left: " + movesLeft;
 		scoreField.text = "Score: " + score;
 	}
