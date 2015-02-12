@@ -11,6 +11,7 @@ class Board extends Sprite {
 	public var numBananas:Int;
 	public var numGrapes:Int;
 	public var numWatermelons:Int;
+	public var currentFruit:String;
 
 
 	public function new(size:Int) {
@@ -48,6 +49,7 @@ class Board extends Sprite {
 			}
 			board.push(newRow);
 		}
+		currentFruit = board[0][0].value;
 	}
 	
 	function getAdjacent(x:Int, y:Int) {

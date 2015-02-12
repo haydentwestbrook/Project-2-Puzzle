@@ -14,17 +14,32 @@ class Scoreboard extends Sprite{
 	public function new(size:Int){
 		super();
 		score = 0;
-		movesLeft = Math.round((size*size)*.75);
-		scoreField = new TextField(100, 20, "Score: 0");
+		movesLeft = Math.round((size*size)*.4);
+		scoreField = new TextField(350, 200, "Score: 0");
+		scoreField.color = 0xFF4747;
+		scoreField.fontSize = 48;
+		scoreField.bold = true;
+		scoreField.fontName = "Gabriola";
 		scoreField.vAlign = VAlign.TOP;
 		scoreField.hAlign = HAlign.LEFT;
-		movesField = new TextField(100, 20, "Moves Left: " + movesLeft);
+		movesField = new TextField(350, 200, "Moves Left: " + movesLeft);
+		movesField.color = 0xFF4747;
+		movesField.fontSize = 48;
+		movesField.bold = true;
+		movesField.fontName = "Gabriola";
 		movesField.vAlign = VAlign.TOP;
 		movesField.hAlign = HAlign.LEFT;
+
 		scoreField.x = 40;
 		scoreField.y = 40;
 		movesField.x = 40;
 		movesField.y = 60;
+
+		scoreField.x = 64;
+		scoreField.y = 420;
+		movesField.x = 64;
+		movesField.y = 480;
+
 		addChild(scoreField);
 		addChild(movesField);
 	}
@@ -36,7 +51,7 @@ class Scoreboard extends Sprite{
 
 	public function updateScore(size){
 		score += movesLeft * 10;
-		movesLeft = Math.round((size*size)*.75);
+		movesLeft = Math.round((size*size)*.4);
 		movesField.text = "Moves Left: " + movesLeft;
 		scoreField.text = "Score: " + score;
 	}
