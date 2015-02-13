@@ -22,10 +22,12 @@ class Root extends Sprite {
 
 		assets = new AssetManager();
 		assets.enqueue("assets/startbutton.png");
+		assets.enqueue("assets/continueButton.png");
 		assets.enqueue("assets/tutorialbutton.png");
 		assets.enqueue("assets/backbutton.png");
 		assets.enqueue("assets/background1.png");
 		assets.enqueue("assets/menu.png");
+		assets.enqueue("assets/continue.png");
 		assets.enqueue("assets/gameover.png");
 		assets.enqueue("assets/assets.xml");
 		assets.enqueue("assets/assets.png");
@@ -69,6 +71,9 @@ class Root extends Sprite {
 			startGame();
 		} else if(button.name == "tutorial") {
 			showTutorial();
+		 } else if(button.name == "next") {
+			game.nextLevel(5);
+			removeChildAt(1);
 		} else if(button.name == "back") {
 			Starling.juggler.tween(getChildAt(0), .25, {
                     transition: Transitions.EASE_OUT,
@@ -79,11 +84,7 @@ class Root extends Sprite {
                         }
         	});
 			addMenu();
-		} else if(button.name == "return"){
-			removeChildren();
-			addMenu();
 		}
-
 	}
 
 	public function startGame() {
@@ -120,14 +121,27 @@ class Root extends Sprite {
 	    }
 	    if(game.checkWin()){
 	    	//TODO: CONTINUE SCREEN
-	    	game.nextLevel(5);
+	    	continueScreen();
 	    }
 	    else if(game.getMoves() == 0){
 	    	//TODO: GAME OVER SCREEN
-	    	addEventListener(Event.TRIGGERED, menuButtonClicked);
 	    	var end = new GameOver();
 	    	addChild(end); 
 	    }
+	}
+
+	public function continueScreen() {
+		removeEventListeners();
+		var continueScreen = new ContinueScreen();
+		continueScreen.alpha = 0;
+		addChild(continueScreen);
+		//Tween in continue screen
+		Starling.juggler.tween(continueScreen, 0.25, {
+                    transition: Transitions.EASE_IN,
+                        delay: .25,
+                        alpha: 1.0
+        });
+        addEventListener(Event.TRIGGERED, menuButtonClicked);
 	}
 
 
@@ -179,6 +193,24 @@ class Menu extends Sprite {
 	}
 }
 
+class ContinueScreen extends Sprite {
+	public var background:Image;
+	public var nextButton: Button;
+
+	public function  new() {
+		super();
+
+		background = new Image(Root.assets.getTexture("continue"));
+		addChild(background);
+
+		nextButton = new Button(Root.assets.getTexture("continueButton"));
+		nextButton.name = "next";
+		nextButton.x = 288;
+		nextButton.y = 450;
+		this.addChild(nextButton);
+	}
+}
+
 class Tutorial extends Sprite {
 
 	public var background:Image;
@@ -201,10 +233,5 @@ class GameOver extends Sprite {
 		super();
 		background = new Image(Root.assets.getTexture("gameover"));
 		addChild(background);
-		returnButton = new Button(Root.assets.getTexture("backbutton"));
-		returnButton.name = "return";
-		returnButton.x = 250;
-		returnButton.y = 350;
-		this.addChild(returnButton);
 	}
 }
