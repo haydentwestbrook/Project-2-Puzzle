@@ -25,24 +25,12 @@ class Root extends Sprite {
 	public function start(startup:Startup) {
 
 		assets = new AssetManager();
-		assets.enqueue("assets/startbutton.png");
-		assets.enqueue("assets/continueButton.png");
-		assets.enqueue("assets/tutorialbutton.png");
-		assets.enqueue("assets/credits.png");
-		assets.enqueue("assets/backbutton.png");
-		assets.enqueue("assets/background1.png");
-		assets.enqueue("assets/creditsbutton.png");
-		assets.enqueue("assets/menu.png");
-		assets.enqueue("assets/menubutton.png");
-		assets.enqueue("assets/continue.png");
-		assets.enqueue("assets/gameover.png");
 		assets.enqueue("assets/assets.xml");
 		assets.enqueue("assets/assets.png");
 		assets.enqueue("assets/FruitSelect.mp3");
 		assets.enqueue("assets/menuselect.mp3");
 		assets.enqueue("assets/wintune.mp3");
 		assets.enqueue("assets/LoseTune.mp3");
-		assets.enqueue("assets/tutorialBackground.png");
 
 		assets.loadQueue(function onProgress(ratio:Float) {
 			
@@ -237,22 +225,22 @@ class Menu extends Sprite {
 	public function new() {
 		super();
 
-		var menu = new Image(Root.assets.getTexture("menu"));
+		var menu = new Image(Root.assets.getTexture("menu.png"));
 		addChild(menu);
 
-		startButton = new Button(Root.assets.getTexture("startbutton"));
+		startButton = new Button(Root.assets.getTexture("startbutton.png"));
 		startButton.name = "start";
 		startButton.x = 250;
 		startButton.y = 200;
 		this.addChild(startButton);
 
-		tutorialButton = new Button(Root.assets.getTexture("tutorialbutton"));
+		tutorialButton = new Button(Root.assets.getTexture("tutorialbutton.png"));
 		tutorialButton.x = 250;
 		tutorialButton.y = 300;
 		tutorialButton.name = "tutorial";
 		this.addChild(tutorialButton);
 
-		creditsButton = new Button(Root.assets.getTexture("creditsbutton"));
+		creditsButton = new Button(Root.assets.getTexture("creditsbutton.png"));
 		creditsButton.x = 250;
 		creditsButton.y = 400;
 		creditsButton.name = "credits";
@@ -267,10 +255,10 @@ class ContinueScreen extends Sprite {
 	public function  new() {
 		super();
 
-		background = new Image(Root.assets.getTexture("continue"));
+		background = new Image(Root.assets.getTexture("continue.png"));
 		addChild(background);
 
-		nextButton = new Button(Root.assets.getTexture("continueButton"));
+		nextButton = new Button(Root.assets.getTexture("continueButton.png"));
 		nextButton.name = "next";
 		nextButton.x = 250;
 		nextButton.y = 300;
@@ -287,9 +275,9 @@ class Tutorial extends Sprite {
 	public function new() {
 		super();
 
-		backButton = new Button(Root.assets.getTexture("backbutton"));
+		backButton = new Button(Root.assets.getTexture("backbutton.png"));
 		backButton.name = "back";
-		tutorialBackground = new Image(Root.assets.getTexture("tutorialBackground"));
+		tutorialBackground = new Image(Root.assets.getTexture("tutorialBackground.png"));
 		addChild(tutorialBackground);
 		this.addChild(backButton);
 
@@ -307,9 +295,9 @@ class Credits extends Sprite {
 	public function new() {
 		super();
 
-		backButton = new Button(Root.assets.getTexture("backbutton"));
+		backButton = new Button(Root.assets.getTexture("backbutton.png"));
 		backButton.name = "back";
-		creditsBackground = new Image(Root.assets.getTexture("credits"));
+		creditsBackground = new Image(Root.assets.getTexture("credits.png"));
 		addChild(creditsBackground);
 		this.addChild(backButton);
 
@@ -324,9 +312,9 @@ class GameOver extends Sprite {
 
 	public function new() {
 		super();
-		background = new Image(Root.assets.getTexture("gameover"));
+		background = new Image(Root.assets.getTexture("gameover.png"));
 		addChild(background);
-		returnButton = new Button(Root.assets.getTexture("menubutton"));
+		returnButton = new Button(Root.assets.getTexture("menubutton.png"));
 		returnButton.x = 250;
 		returnButton.y = 300;
 		returnButton.name = "return";

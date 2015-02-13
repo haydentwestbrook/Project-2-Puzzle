@@ -20,7 +20,7 @@ class Game extends Sprite {
 	public function new(size:Int) {
 		super();
 		scoreboard = new Scoreboard(size);
-		background = new Image(Root.assets.getTexture("background" + level));
+		background = new Image(Root.assets.getTexture("background" + level + ".png"));
 		board = new Board(size);
 		//board.display();
 		board.x = 64;
@@ -66,7 +66,7 @@ class Game extends Sprite {
 		removeChildren();
 		scoreboard.updateScore(size);
 		board = new Board(size);
-		background = new Image(Root.assets.getTexture("background" + level));
+		background = new Image(Root.assets.getTexture("background" + level + ".png"));
 		addChild(background);
 		addChild(scoreboard);
 		addChild(board);
