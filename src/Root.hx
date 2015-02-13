@@ -1,3 +1,5 @@
+import flash.media.Sound;
+import flash.media.SoundChannel;
 import starling.display.Sprite;
 import starling.utils.AssetManager;
 import starling.display.Button;
@@ -31,11 +33,20 @@ class Root extends Sprite {
 		assets.enqueue("assets/gameover.png");
 		assets.enqueue("assets/assets.xml");
 		assets.enqueue("assets/assets.png");
-		
+		assets.enqueue("assets/FruitSelect.mp3");
+		assets.enqueue("assets/menuselect.mp3");
+		assets.enqueue("assets/wintune.mp3");
+		assets.enqueue("assets/LoseTune.mp3");
 
 		assets.loadQueue(function onProgress(ratio:Float) {
-
+			
             if (ratio == 1) {
+				
+				//var fruitSelect = Root.assets.playSound("FruitSelect.wav");
+				//var winTune = Root.assets.playSound("wintune.mp3");
+				//var loseTune = Root.assets.playSound("LoseTune.mp3");
+
+				
 
                 Starling.juggler.tween(startup.loadingBitmap, 2.0, {
                     transition: Transitions.EASE_OUT,
@@ -67,6 +78,8 @@ class Root extends Sprite {
 
 	public function menuButtonClicked(event:Event) {
 		var button = cast(event.target, Button);
+		var menuSelect:SoundChannel = Root.assets.playSound("menuselect");
+		menuSelect;
 		if(button.name == "start") {
 			startGame();
 		} else if(button.name == "tutorial") {
@@ -104,6 +117,8 @@ class Root extends Sprite {
 	}
 
 	public function flip(event:KeyboardEvent) {
+		var fruitSelect:SoundChannel = Root.assets.playSound("FruitSelect");
+		fruitSelect;
 	    if (event.keyCode == 49) {
 	    	game.flip('cherry');
 	    }
