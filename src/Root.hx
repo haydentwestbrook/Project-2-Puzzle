@@ -222,8 +222,8 @@ class ContinueScreen extends Sprite {
 
 		nextButton = new Button(Root.assets.getTexture("continueButton"));
 		nextButton.name = "next";
-		nextButton.x = 288;
-		nextButton.y = 450;
+		nextButton.x = 250;
+		nextButton.y = 300;
 		this.addChild(nextButton);
 	}
 }
