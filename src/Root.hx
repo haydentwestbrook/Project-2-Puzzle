@@ -85,6 +85,8 @@ class Root extends Sprite {
 		} else if(button.name == "tutorial") {
 			showTutorial();
 		 } else if(button.name == "next") {
+		 	Starling.current.stage.removeEventListeners();
+		 	Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, flip);
 			game.nextLevel(5);
 			removeChildAt(1);
 		} else if(button.name == "back") {
@@ -146,7 +148,7 @@ class Root extends Sprite {
 	}
 
 	public function continueScreen() {
-		removeEventListeners();
+		Starling.current.stage.removeEventListeners();
 		var continueScreen = new ContinueScreen();
 		continueScreen.alpha = 0;
 		addChild(continueScreen);
