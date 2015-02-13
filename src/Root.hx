@@ -1,5 +1,6 @@
 import flash.media.Sound;
 import flash.media.SoundChannel;
+import flash.media.SoundMixer;
 import starling.display.Sprite;
 import starling.utils.AssetManager;
 import starling.display.Button;
@@ -15,6 +16,7 @@ class Root extends Sprite {
 
 	public static var assets:AssetManager;
 	public var game:Game;
+	 
 
 	public function new() {
 		super();
@@ -81,6 +83,7 @@ class Root extends Sprite {
 	}
 
 	public function menuButtonClicked(event:Event) {
+		flash.media.SoundMixer.stopAll();
 		var button = cast(event.target, Button);
 		var menuSelect:SoundChannel = Root.assets.playSound("menuselect");
 		menuSelect;
@@ -153,12 +156,16 @@ class Root extends Sprite {
 	    }
 	    if(game.checkWin()){
 	    	//TODO: CONTINUE SCREEN
+			var winTune:SoundChannel = Root.assets.playSound("wintune");
+			winTune;
 	    	continueScreen();
 	    }
 	    else if(game.getMoves() == 0){
 	    	addEventListener(Event.TRIGGERED, menuButtonClicked);
 	    	var end = new GameOver();
 	    	addChild(end); 
+			var losetune:SoundChannel = Root.assets.playSound("LoseTune");
+			losetune;
 	    }
 	}
 
