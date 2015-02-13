@@ -83,24 +83,32 @@ class Root extends Sprite {
 		menuSelect;
 		if(button.name == "start") {
 			startGame();
-		} else if(button.name == "tutorial") {
+		} 
+		else if(button.name == "tutorial") {
 			showTutorial();
-		 } else if(button.name == "next") {
+		 } 
+		else if(button.name == "next") {
 		 	Starling.current.stage.removeEventListeners();
 		 	Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, flip);
 			game.nextLevel(5);
 			removeChildAt(1);
-		} else if(button.name == "back") {
+		} 
+		else if(button.name == "back") {
 			Starling.juggler.tween(getChildAt(0), .25, {
                     transition: Transitions.EASE_OUT,
                         delay: 0.0,
                         alpha: 0.0,
                         onComplete: function() {
                         	removeChildAt(0);
-                        }
+        					}
+        
         	});
 			addMenu();
 		}
+		else if(button.name == "return"){
+        	removeChildren();
+        	addMenu();
+        }
 	}
 
 	public function startGame() {
@@ -142,7 +150,7 @@ class Root extends Sprite {
 	    	continueScreen();
 	    }
 	    else if(game.getMoves() == 0){
-	    	//TODO: GAME OVER SCREEN
+	    	addEventListener(Event.TRIGGERED, menuButtonClicked);
 	    	var end = new GameOver();
 	    	addChild(end); 
 	    }
@@ -257,5 +265,10 @@ class GameOver extends Sprite {
 		super();
 		background = new Image(Root.assets.getTexture("gameover"));
 		addChild(background);
+		returnButton = new Button(Root.assets.getTexture("backbutton"));
+		returnButton.x = 250;
+		returnButton.y = 300;
+		returnButton.name = "return";
+		addChild(returnButton);
 	}
 }
