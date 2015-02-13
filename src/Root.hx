@@ -26,9 +26,12 @@ class Root extends Sprite {
 		assets.enqueue("assets/startbutton.png");
 		assets.enqueue("assets/continueButton.png");
 		assets.enqueue("assets/tutorialbutton.png");
+		assets.enqueue("assets/credits.png");
 		assets.enqueue("assets/backbutton.png");
 		assets.enqueue("assets/background1.png");
+		assets.enqueue("assets/creditsbutton.png");
 		assets.enqueue("assets/menu.png");
+		assets.enqueue("assets/menubutton.png");
 		assets.enqueue("assets/continue.png");
 		assets.enqueue("assets/gameover.png");
 		assets.enqueue("assets/assets.xml");
@@ -86,7 +89,10 @@ class Root extends Sprite {
 		} 
 		else if(button.name == "tutorial") {
 			showTutorial();
-		 } 
+		 }
+		else if(button.name == "credits") {
+			showCredits();
+		} 
 		else if(button.name == "next") {
 		 	Starling.current.stage.removeEventListeners();
 		 	Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, flip);
@@ -191,6 +197,27 @@ class Root extends Sprite {
                         alpha: 1.0
         });
 	}
+
+	public function showCredits() {
+		//Tween out the menu
+		Starling.juggler.tween(getChildAt(0), 0.25, {
+                    transition: Transitions.EASE_OUT,
+                        delay: 0.0,
+                        alpha: 0.0,
+                        onComplete: function() {
+                        	removeChildAt(0);
+                        }
+        });
+		var credits = new Credits();
+		credits.alpha = 0;
+		addChild(credits);
+		//Tween in tutorial screen
+		Starling.juggler.tween(credits, 0.25, {
+                    transition: Transitions.EASE_IN,
+                        delay: .25,
+                        alpha: 1.0
+        });
+	}
 }
 
 class Menu extends Sprite {
@@ -198,6 +225,7 @@ class Menu extends Sprite {
 	public var background:Image;
 	public var startButton:Button;
 	public var tutorialButton:Button;
+	public var creditsButton:Button;
 
 	public function new() {
 		super();
@@ -216,6 +244,12 @@ class Menu extends Sprite {
 		tutorialButton.y = 300;
 		tutorialButton.name = "tutorial";
 		this.addChild(tutorialButton);
+
+		creditsButton = new Button(Root.assets.getTexture("creditsbutton"));
+		creditsButton.x = 250;
+		creditsButton.y = 400;
+		creditsButton.name = "credits";
+		this.addChild(creditsButton);
 	}
 }
 
@@ -257,6 +291,26 @@ class Tutorial extends Sprite {
 	}
 }
 
+class Credits extends Sprite {
+
+	public var background:Image;
+	public var backButton:Button;
+	public var creditsBackground:Image;
+
+	public function new() {
+		super();
+
+		backButton = new Button(Root.assets.getTexture("backbutton"));
+		backButton.name = "back";
+		creditsBackground = new Image(Root.assets.getTexture("credits"));
+		addChild(creditsBackground);
+		this.addChild(backButton);
+
+		backButton.x = 50;
+		backButton.y = 520;
+	}
+}
+
 class GameOver extends Sprite {
 	public var background:Image;
 	public var returnButton:Button;
@@ -265,7 +319,7 @@ class GameOver extends Sprite {
 		super();
 		background = new Image(Root.assets.getTexture("gameover"));
 		addChild(background);
-		returnButton = new Button(Root.assets.getTexture("backbutton"));
+		returnButton = new Button(Root.assets.getTexture("menubutton"));
 		returnButton.x = 250;
 		returnButton.y = 300;
 		returnButton.name = "return";
