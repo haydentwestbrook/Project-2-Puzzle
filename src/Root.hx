@@ -37,6 +37,7 @@ class Root extends Sprite {
 		assets.enqueue("assets/menuselect.mp3");
 		assets.enqueue("assets/wintune.mp3");
 		assets.enqueue("assets/LoseTune.mp3");
+		assets.enqueue("assets/tutorialBackground.png");
 
 		assets.loadQueue(function onProgress(ratio:Float) {
 			
@@ -232,13 +233,19 @@ class Tutorial extends Sprite {
 
 	public var background:Image;
 	public var backButton:Button;
+	public var tutorialBackground:Image;
 
 	public function new() {
 		super();
 
 		backButton = new Button(Root.assets.getTexture("backbutton"));
 		backButton.name = "back";
+		tutorialBackground = new Image(Root.assets.getTexture("tutorialBackground"));
+		addChild(tutorialBackground);
 		this.addChild(backButton);
+
+		backButton.x = 50;
+		backButton.y = 520;
 	}
 }
 
